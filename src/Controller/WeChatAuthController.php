@@ -56,21 +56,39 @@ class WeChatAuthController {
         ->execute();
       session()->set('curuser', $existed_user);
     }else{
-      $uid = db_insert('user')
-        ->fields(array(
-          'uuid' => $user['id'],
-          'username' => $user['name'],
-          'password' => helper()->random(6),
-          'nickname' => $user['nickname'],
-          'email' => $user['email'],
-          'provider' => 'wechat_login',
-          'avatar' => $user['avatar'] ? $user['avatar'] : '/theme/hunter/assets/avatar/'.rand(0,38).'.jpg',
-          'status' => 1,
-          'created' => time(),
-          'updated' => time(),
-          'accessed' => time()
-        ))
-        ->execute();
+      if(isset($user['name'])){
+        $uid = db_insert('user')
+          ->fields(array(
+            'uuid' => $user['id'],
+            'username' => $user['name'],
+            'password' => helper()->random(6),
+            'nickname' => $user['nickname'],
+            'email' => $user['email'],
+            'provider' => 'wechat_login',
+            'avatar' => $user['avatar'] ? $user['avatar'] : '/theme/hunter/assets/avatar/'.rand(0,38).'.jpg',
+            'status' => 1,
+            'created' => time(),
+            'updated' => time(),
+            'accessed' => time()
+          ))
+          ->execute();
+      }else {
+        $uid = db_insert('user')
+          ->fields(array(
+            'uuid' => $user['id'],
+            'username' => $user['id'],
+            'password' => helper()->random(6),
+            'nickname' => $user['id'],
+            'email' => '',
+            'provider' => 'wechat_login',
+            'avatar' => '/theme/hunter/assets/avatar/'.rand(0,38).'.jpg',
+            'status' => 1,
+            'created' => time(),
+            'updated' => time(),
+            'accessed' => time()
+          ))
+          ->execute();
+      }
 
       $new_user = db_select('user', 'u')
                 ->fields('u')
