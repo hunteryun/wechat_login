@@ -1,0 +1,5 @@
+name: Wechat Login
+type: module
+description: Wechat login module for HunterPHP.
+core: 1.x
+package: Hunter

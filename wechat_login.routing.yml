@@ -1,0 +1,6 @@
+wechat_auth.callback:
+  path: '/wechat/login/callback'
+  defaults:
+    _controller: 'Hunter\wechat_login\Controller\WeChatAuthController::wechat_auth_callback'
+  options:
+    no_cache: TRUE

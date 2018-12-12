@@ -1,0 +1,3 @@
+wechat_oauth:
+  title: 'Wechat Login Oauth'
+  _callback: 'Hunter\wechat_login\WechatOauthPermission'
