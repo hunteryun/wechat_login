@@ -18,10 +18,10 @@ class WechatOauthPermission {
    */
   public function handle(ServerRequestInterface $request, ResponseInterface $response, callable $next) {
     $config = [
-      'app_id' => variable_set('wechat_login_appid'),
-      'secret' => variable_set('wechat_login_appsecret'),
+      'app_id' => variable_get('wechat_login_appid'),
+      'secret' => variable_get('wechat_login_appsecret'),
       'oauth' => [
-          'scopes'   => [variable_set('wechat_login_client_scope')],
+          'scopes'   => [variable_get('wechat_login_client_scope')],
           'callback' => '/wechat/login/callback',
       ],
     ];

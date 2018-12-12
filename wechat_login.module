@@ -23,7 +23,7 @@ function wechat_login_config_form() {
     '#type' => 'select',
     '#required' => TRUE,
     '#title' => t('Client Scope'),
-    '#default_value' => variable_get('wechat_login_client_scope'),
+    '#default_value' => variable_get('wechat_login_client_scope', 'snsapi_userinfo'),
     '#description' => t('To see the differences between scopes, please see <a href="https://www.easywechat.com/docs/master/official-account/oauth" target="_blank">the documentation</a>'),
     '#options' => [
       'snsapi_base' => 'snsapi_base',
